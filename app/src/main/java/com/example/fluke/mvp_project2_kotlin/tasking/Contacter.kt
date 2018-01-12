@@ -5,7 +5,9 @@ import android.content.Context
 interface Contacter{
 
     interface View{
+
         fun SendIntents(data : String)
+
     }
 
     interface Present{

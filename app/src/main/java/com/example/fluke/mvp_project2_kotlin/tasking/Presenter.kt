@@ -11,35 +11,34 @@ import android.widget.Toast
 
 class Presenter : Contacter.Present {
 
-    override fun OnClicked(model: Contacter.Model, context: Context , view : Contacter.View) {
-        Log.e("aoijfawe", model.Receiver())
+    override fun OnClicked(model: Contacter.Model, context: Context, view: Contacter.View) {
+
         var data: List<String> = model.Receiver().split(",")
         var name: String = data.get(0)
         var cream: String = data.get(1)
         var choco: String = data.get(2)
         var quan: String = data.get(3)
 
-        if (name.isEmpty() || name.isNullOrEmpty() || name.equals(" ") || quan== "0"
-                ||name.equals("")){
+        if (name.isEmpty() || name.isNullOrEmpty() || name.equals(" ") || quan == "0"
+                || name.equals("")) {
 
-            Toast.makeText(context , "กรุณากรอกข้อมูลให้ครบด้วยครับ" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "กรุณากรอกข้อมูลให้ครบด้วยครับ", Toast.LENGTH_SHORT).show()
 
-        }else{
+        } else {
 
-            view.SendIntents( OnDataReady(name, cream, choco, quan))
+            view.SendIntents(OnDataReady(name, cream, choco, quan))
             Log.e("finalText", OnDataReady(name, cream, choco, quan))
 
-
         }
-
     }
 
 
     override fun OnDataReady(name: String, isIce: String, isChoco: String, qunn: String): String {
+
         var resuld: String = "คุณ $name \nได้ทำการสั่งกาแฟ"
 
         if (isIce == "true") {
-            resuld += "\nเพิ่ม Whipping cream,"
+            resuld += "\nเพิ่ม Whipping cream"
         }
         if (isChoco == "true") {
             resuld += "\nเพิ่ม Chocolate"
@@ -48,15 +47,6 @@ class Presenter : Contacter.Present {
         resuld += "\n จำนวน $qunn แก้ว"
 
         return resuld
-    }
-
-
-    fun filter(i: String): Int {
-        if (i.toInt() == 1) {
-            return 1
-        } else {
-            return 0
-        }
     }
 
     override fun CheckButNegative(quans: Int): Int {

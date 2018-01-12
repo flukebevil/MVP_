@@ -7,6 +7,6 @@ package com.example.fluke.mvp_project2_kotlin.base
 interface BaseView{
 
     fun OnEvents()
-    fun init()
 
+    fun init()
 }
